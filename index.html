@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cajun Sno | Lafayette’s Favorite Stuffed Snowballs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --purple: #5b2c83;
+      --purple-dark: #3b1b57;
+      --blue: #3bb4e5;
+      --blue-light: #e4f7ff;
+      --pink: #ff6fa8;
+      --yellow: #ffd75e;
+      --white: #ffffff;
+      --gray: #f5f5f7;
+      --text-dark: #1f1b2e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f7f2ff 0%, #f9fcff 40%, #ffffff 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: radial-gradient(circle at top left, var(--blue) 0, var(--purple) 40%, var(--purple-dark) 100%);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: conic-gradient(from 200deg, var(--blue), var(--purple), var(--pink), var(--yellow), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a {
+      opacity: 0.9;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: var(--yellow);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 215, 94, 0.15);
+      border: 1px solid rgba(255, 215, 94, 0.7);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-cta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 3.5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+
+    .hero {
+      background: radial-gradient(circle at top left, #ffffff 0, #f4f0ff 40%, #e4f7ff 100%);
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(59, 180, 229, 0.08);
+      border: 1px solid rgba(59, 180, 229, 0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--purple-dark);
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-pill {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--pink);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 3vw + 1.2rem, 3.1rem);
+      line-height: 1.1;
+      color: var(--purple-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #4b3f63;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--white);
+      border: 1px solid rgba(91, 44, 131, 0.12);
+      box-shadow: 0 8px 20px rgba(31, 27, 46, 0.06);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(91, 44, 131, 0.35);
+    }
+
+    .btn-ghost {
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(91, 44, 131, 0.4);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      color: var(--purple-dark);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #6b5a8a;
+    }
+
+    .hero-note strong {
+      font-weight: 700;
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.25rem;
+      box-shadow: 0 18px 40px rgba(31, 27, 46, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--purple-dark);
+    }
+
+    .hero-card-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #8b7aa8;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .hero-snowball {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 1.1rem;
+      background: radial-gradient(circle at 20% 0, #ffffff 0, #ffe0f0 30%, #c3e9ff 70%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-snowball::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 999px 999px 40% 40%;
+      background: conic-gradient(from 210deg, #ff8ac2, #ff6fa8, #ffb3d6, #ffe0f0, #ff8ac2);
+    }
+
+    .hero-snowball::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 26%;
+      border-radius: 999px 999px 40% 40%;
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(31, 27, 46, 0.18);
+    }
+
+    .hero-card-copy {
+      font-size: 0.8rem;
+      color: #6b5a8a;
+    }
+
+    .hero-card-copy strong {
+      color: var(--purple-dark);
+    }
+
+    .hero-pill {
+      position: absolute;
+      right: -10px;
+      top: 18%;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--purple-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      box-shadow: 0 10px 25px rgba(255, 215, 94, 0.6);
+    }
+
+    .hero-floating {
+      position: absolute;
+      left: -6px;
+      bottom: -10px;
+      padding: 0.5rem 0.9rem;
+      border-radius: 1rem;
+      background: rgba(59, 180, 229, 0.95);
+      color: var(--white);
+      font-size: 0.75rem;
+      box-shadow: 0 12px 30px rgba(59, 180, 229, 0.7);
+    }
+
+    .hero-floating strong {
+      font-size: 0.9rem;
+    }
+
+    /* Flavors */
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8b7aa8;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-heading {
+      font-size: 1.7rem;
+      color: var(--purple-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #6b5a8a;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .flavor-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .flavor-card {
+      background: var(--white);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: 0 14px 30px rgba(31, 27, 46, 0.08);
+      border: 1px solid rgba(91, 44, 131, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .flavor-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8b7aa8;
+      margin-bottom: 0.15rem;
+    }
+
+    .flavor-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--purple-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .flavor-tagline {
+      font-size: 0.8rem;
+      color: #6b5a8a;
+      margin-bottom: 0.4rem;
+    }
+
+    .flavor-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #4b3f63;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+    }
+
+    .flavor-list li::before {
+      content: "• ";
+      color: var(--blue);
+    }
+
+    .flavor-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .flavor-pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: var(--blue-light);
+      color: #256f8f;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Story */
+
+    .story {
+      background: radial-gradient(circle at top, #f4f0ff 0, #ffffff 55%, #fdf7ff 100%);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.25rem;
+      align-items: center;
+    }
+
+    .story-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 16px 36px rgba(31, 27, 46, 0.12);
+      border: 1px solid rgba(91, 44, 131, 0.06);
+    }
+
+    .story-heading {
+      font-size: 1.5rem;
+      color: var(--purple-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8b7aa8;
+      margin-bottom: 0.9rem;
+    }
+
+    .story-body {
+      font-size: 0.9rem;
+      color: #4b3f63;
+      margin-bottom: 1rem;
+    }
+
+    .story-body p + p {
+      margin-top: 0.7rem;
+    }
+
+    .story-highlight {
+      padding: 0.7rem 0.9rem;
+      border-radius: 0.9rem;
+      background: rgba(59, 180, 229, 0.06);
+      font-size: 0.8rem;
+      color: #256f8f;
+    }
+
+    .story-highlight strong {
+      color: var(--purple-dark);
+    }
+
+    .story-photo {
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, #c3e9ff, #ffe0f0);
+      padding: 0.9rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+    }
+
+    .story-photo-inner {
+      border-radius: 1.1rem;
+      background: #ffffff;
+      height: 100%;
+      box-shadow: 0 18px 40px rgba(31, 27, 46, 0.18);
+      position: relative;
+    }
+
+    .story-photo-label {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(91, 44, 131, 0.95);
+      color: var(--white);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Visit / Contact */
+
+    .visit {
+      background: var(--gray);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .visit-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 14px 30px rgba(31, 27, 46, 0.08);
+      border: 1px solid rgba(91, 44, 131, 0.06);
+    }
+
+    .visit-heading {
+      font-size: 1.4rem;
+      color: var(--purple-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .visit-subtitle {
+      font-size: 0.9rem;
+      color: #6b5a8a;
+      margin-bottom: 1.1rem;
+    }
+
+    .visit-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .visit-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8b7aa8;
+      margin-bottom: 0.25rem;
+    }
+
+    .visit-value {
+      color: #4b3f63;
+    }
+
+    .visit-value strong {
+      color: var(--purple-dark);
+    }
+
+    .visit-note {
+      font-size: 0.8rem;
+      color: #6b5a8a;
+      margin-bottom: 1rem;
+    }
+
+    .visit-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-outline {
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(91, 44, 131, 0.4);
+      background: #ffffff;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      color: var(--purple-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .visit-social {
+      font-size: 0.8rem;
+      color: #6b5a8a;
+    }
+
+    .visit-social a {
+      color: var(--purple);
+      font-weight: 600;
+    }
+
+    .visit-map {
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, #c3e9ff, #ffe0f0);
+      padding: 0.9rem;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visit-map-inner {
+      border-radius: 1.1rem;
+      background: #ffffff;
+      height: 100%;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(31, 27, 46, 0.18);
+    }
+
+    .visit-map-pin {
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--pink);
+      transform-origin: 50% 80%;
+      box-shadow: 0 10px 25px rgba(255, 111, 168, 0.7);
+    }
+
+    .visit-map-pin::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .visit-map-label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(31, 27, 46, 0.9);
+      color: var(--white);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 1.5rem;
+      background: #120c1f;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-brand span {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      opacity: 0.8;
+    }
+
+    .footer-small {
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .story-grid,
+      .visit-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      header {
+        position: static;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding-inline: 1.1rem;
+      }
+
+      .flavor-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .visit-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="logo">
+          <div class="logo-mark">CS</div>
+          <div>
+            <div style="font-size:0.8rem;">Cajun Sno</div>
+            <div style="font-size:0.7rem;opacity:0.8;">Lafayette, Louisiana</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#flavors">Flavors</a>
+          <a href="#story">Our Story</a>
+          <a href="#visit">Visit Us</a>
+        </nav>
+        <div class="nav-cta">
+          <span class="nav-cta-dot"></span>
+          Open seasonally • Drive-thru
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="section hero">
+        <div class="section-inner hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-pill"></span>
+              Family-owned in Lafayette since 1991
+            </div>
+            <h1>Lafayette’s Favorite Stuffed Snowballs</h1>
+            <p class="hero-subtitle">35 years of cool memories, premium ice, and real Louisiana flavor.</p>
+
+            <div class="hero-badges">
+              <div class="badge">
+                <span class="badge-dot"></span>
+                Over 60+ classic &amp; wild flavors
+              </div>
+              <div class="badge">
+                <span class="badge-dot" style="background:var(--pink);"></span>
+                Stuffed snowballs with creamy centers
+              </div>
+              <div class="badge">
+                <span class="badge-dot" style="background:var(--yellow);"></span>
+                Sugar-free options everyone can enjoy
+              </div>
+            </div>
+
+            <div class="hero-cta-row">
+              <button class="btn-primary" onclick="document.getElementById('visit').scrollIntoView({behavior:'smooth'})">
+                View hours &amp; location
+              </button>
+              <button class="btn-ghost" onclick="document.getElementById('flavors').scrollIntoView({behavior:'smooth'})">
+                Browse our flavors
+              </button>
+              <span class="hero-note">
+                <strong>4303 Johnston Street</strong> • Lafayette, LA 70503
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div>
+                  <div class="hero-card-title">Today at Cajun Sno</div>
+                  <div class="hero-card-tag">Stuffed snowballs • Drive-thru • Family-friendly</div>
+                </div>
+                <div style="font-size:0.8rem;color:#8b7aa8;">Since 1991</div>
+              </div>
+              <div class="hero-card-body">
+                <div class="hero-snowball"></div>
+                <div class="hero-card-copy">
+                  <p><strong>Cool off the Cajun way.</strong></p>
+                  <p>From Bahama Mama to Blue Bubble Gum, Pink Lady to Lemon Lime, every cup is packed with finely shaved ice and bold, true-to-taste syrups.</p>
+                  <p style="margin-top:0.5rem;">Add cream, stuff it with ice cream, or keep it classic—there’s a snowball for everyone.</p>
+                </div>
+              </div>
+            </div>
+            <div class="hero-pill">
+              35 Years of Cool Memories
+            </div>
+            <div class="hero-floating">
+              <div style="font-size:0.7rem;opacity:0.9;">Family-owned &amp; operated</div>
+              <strong>Locals’ favorite since 1991</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flavors -->
+      <section id="flavors" class="section">
+        <div class="section-inner">
+          <div class="section-title">
+            <div class="section-kicker">Flavors</div>
+            <h2 class="section-heading">Snowball Flavors for Every Craving</h2>
+            <p class="section-subtitle">
+              Whether you love bright, fruity classics or rich, creamy treats, Cajun Sno has a flavor with your name on it.
+            </p>
+          </div>
+
+          <div class="flavor-grid">
+            <!-- Snowball Flavors -->
+            <article class="flavor-card">
+              <div class="flavor-label">Classic Snowball Flavors</div>
+              <div class="flavor-title">Snowball Flavors</div>
+              <div class="flavor-tagline">Bright, bold, and ice-cold favorites.</div>
+              <ul class="flavor-list">
+                <li>Bahama Mama</li>
+                <li>Blue Bubble Gum</li>
+                <li>Pink Lady</li>
+                <li>Lemon Lime</li>
+                <li>Wedding Cake</li>
+                <li>Tiger’s Blood</li>
+                <li>Strawberry</li>
+                <li>Grape</li>
+              </ul>
+              <div class="flavor-pill-row">
+                <span class="flavor-pill">Kid-approved</span>
+                <span class="flavor-pill">Colorful &amp; fun</span>
+              </div>
+            </article>
+
+            <!-- Cream Flavors -->
+            <article class="flavor-card">
+              <div class="flavor-label">Creamy &amp; Stuffed</div>
+              <div class="flavor-title">Cream Flavors</div>
+              <div class="flavor-tagline">Rich, smooth, and extra indulgent.</div>
+              <ul class="flavor-list">
+                <li>Banana Cream</li>
+                <li>Coconut Cream</li>
+                <li>Vanilla Cream</li>
+                <li>Chocolate</li>
+                <li>Ice Cream Stuffed</li>
+                <li>Sweet Cream Toppings</li>
+              </ul>
+              <div class="flavor-pill-row">
+                <span class="flavor-pill">Perfectly stuffed</span>
+                <span class="flavor-pill">Extra creamy</span>
+              </div>
+            </article>
+
+            <!-- Sugar Free -->
+            <article class="flavor-card">
+              <div class="flavor-label">Sugar Free Options</div>
+              <div class="flavor-title">Sugar Free Flavors</div>
+              <div class="flavor-tagline">All the flavor, less of the sugar.</div>
+              <ul class="flavor-list">
+                <li>Strawberry (Sugar Free)</li>
+                <li>Grape (Sugar Free)</li>
+                <li>Lemon Lime (Sugar Free)</li>
+                <li>Cherry (Sugar Free)</li>
+              </ul>
+              <div class="flavor-pill-row">
+                <span class="flavor-pill">Diabetic-friendly</span>
+                <span class="flavor-pill">Still delicious</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Story -->
+      <section id="story" class="section story">
+        <div class="section-inner story-grid">
+          <div>
+            <div class="section-kicker">Our Story</div>
+            <h2 class="section-heading" style="text-align:left;">A Lafayette Tradition Since 1991</h2>
+            <p class="section-subtitle" style="text-align:left;margin-left:0;">
+              Cajun Sno has been serving up stuffed snowballs, smiles, and summer memories to Lafayette families for over three decades.
+            </p>
+
+            <div class="story-card">
+              <h3 class="story-heading">From One Stand to a Local Favorite</h3>
+              <div class="story-meta">Family-owned &amp; operated • 35+ years</div>
+              <div class="story-body">
+                <p>
+                  Cajun Sno was opened in 1991 by <strong>Robin Chevalier</strong> with a simple idea: serve the best-tasting snowballs in Lafayette with the kind of friendly service you’d expect from family.
+                </p>
+                <p>
+                  Since then, Cajun Sno has become a seasonal tradition. Kids who grew up visiting the stand now bring their own families to share the same cool, colorful treats and laid-back Louisiana vibes.
+                </p>
+              </div>
+              <div class="story-highlight">
+                <strong>More than just a snowball stand.</strong> Cajun Sno is where ball games are celebrated, summer days are cooled down, and neighbors become regulars.
+              </div>
+            </div>
+          </div>
+
+          <div class="story-photo">
+            <div class="story-photo-inner">
+              <!-- Placeholder for stand photo -->
+              <div class="story-photo-label">Cajun Sno • Lafayette, LA</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visit / Contact -->
+      <section id="visit" class="section visit">
+        <div class="section-inner visit-grid">
+          <div class="visit-card">
+            <div class="section-kicker">Visit Us</div>
+            <h2 class="visit-heading">Stop by for a Snowball</h2>
+            <p class="visit-subtitle">
+              Pull through the drive-thru or swing by with the family—your next favorite flavor is waiting.
+            </p>
+
+            <div class="visit-row">
+              <div>
+                <div class="visit-label">Location</div>
+                <div class="visit-value">
+                  <strong>4303 Johnston Street</strong><br />
+                  Lafayette, LA 70503
+                </div>
+              </div>
+              <div>
+                <div class="visit-label">Hours</div>
+                <div class="visit-value">
+                  Open seasonally<br />
+                  Check social media for daily hours
+                </div>
+              </div>
+              <div>
+                <div class="visit-label">Contact</div>
+                <div class="visit-value">
+                  Follow us on social<br />
+                  for updates &amp; specials
+                </div>
+              </div>
+            </div>
+
+            <p class="visit-note">
+              Thank you for supporting a small, family-owned business. Every visit helps keep this Lafayette tradition going strong.
+            </p>
+
+            <div class="visit-cta-row">
+              <button class="btn-outline">
+                Get directions
+              </button>
+              <span class="visit-social">
+                Find Cajun Sno on
+                <a href="#">Facebook</a> &amp; <a href="#">Instagram</a> for flavor drops and weather updates.
+              </span>
+            </div>
+          </div>
+
+          <div class="visit-map">
+            <div class="visit-map-inner">
+              <div class="visit-map-label">4303 Johnston St • Lafayette, LA</div>
+              <div class="visit-map-pin"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo-mark" style="width:28px;height:28px;font-size:0.9rem;">CS</div>
+          <span>Cajun Sno • Lafayette, LA</span>
+        </div>
+        <div class="footer-links">
+          <span class="footer-small">© 2026 Cajun Sno. All rights reserved.</span>
+          <span class="footer-small">Thank you for supporting local small business.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
