@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cajun Sno Luxury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  background:linear-gradient(180deg,#f6f7ff,#ffffff);
+  overflow-x:hidden;
+}
+
+#snow{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,0.7);
+}
+
+nav ul{display:flex;gap:30px;list-style:none;cursor:pointer;}
+nav button{
+  background:#6a4cff;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  align-items:center;
+  padding:100px 60px;
+  gap:40px;
+}
+
+.hero img{
+  width:50%;
+  border-radius:20px;
+  transition:.3s;
+}
+
+.hero h1{font-size:60px;}
+.hero span{color:#6a4cff;}
+
+.btn{
+  padding:12px 25px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+}
+
+.primary{background:#6a4cff;color:white;}
+.secondary{border:2px solid #6a4cff;color:#6a4cff;background:white;}
+
+/* MENU */
+.menu{text-align:center;padding:80px;}
+.filters button{margin:5px;}
+
+.card{
+  background:white;
+  padding:20px;
+  margin:10px;
+  display:inline-block;
+  border-radius:15px;
+}
+
+/* LOYALTY */
+.loyalty{
+  text-align:center;
+  padding:60px;
+  background:linear-gradient(90deg,#6a4cff,#9f7bff);
+  color:white;
+}
+
+.points{
+  font-size:40px;
+  margin:10px 0;
+}
+
+.reward{
+  margin-top:10px;
+}
+
+/* FOOTER */
+.footer{
+  background:#2b2b5e;
+  color:white;
+  padding:40px;
+  display:flex;
+  justify-content:space-around;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<nav>
+  <h2>Cajun Sno</h2>
+  <ul>
+    <li>Home</li>
+    <li>Menu</li>
+    <li>Loyalty</li>
+  </ul>
+  <button>Order</button>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Elite <span>Snowballs</span></h1>
+    <p>35 years of flavor</p>
+    <button class="btn primary">Find Us</button>
+    <button class="btn secondary">Menu</button>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e">
+</section>
+
+<section class="menu">
+  <h2>Menu</h2>
+
+  <div class="filters">
+    <button onclick="filterMenu('all')">All</button>
+    <button onclick="filterMenu('fruit')">Fruity</button>
+    <button onclick="filterMenu('cream')">Cream</button>
+  </div>
+
+  <div class="card">
+    <h3>Flavors</h3>
+    <li class="fruit">Bahama Mama</li>
+    <li class="cream">Dreamsicle</li>
+    <li class="fruit">Kiwi</li>
+  </div>
+</section>
+
+<section class="loyalty">
+  <h2>Customer Rewards</h2>
+
+  <div class="points" id="points">0</div>
+
+  <button class="btn primary" onclick="earnPoints()">Earn Points</button>
+
+  <div class="reward" id="reward"></div>
+</section>
+
+<div class="footer">
+  <div>Visit: Lafayette</div>
+  <div>Hours: 11–10</div>
+  <div>Call: (337)</div>
+</div>
+
+<script>
+
+/* SNOW */
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+let snow=[];
+for(let i=0;i<100;i++){
+  snow.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*3});
+}
+
+function drawSnow(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
+  snow.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y+=1;
+    if(p.y>canvas.height)p.y=0;
+  });
+}
+setInterval(drawSnow,30);
+
+/* PARALLAX */
+document.addEventListener("mousemove",(e)=>{
+  let img=document.querySelector(".hero img");
+  let x=(innerWidth/2-e.pageX)/30;
+  let y=(innerHeight/2-e.pageY)/30;
+  img.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+
+/* FILTER */
+function filterMenu(type){
+  document.querySelectorAll(".card li").forEach(item=>{
+    if(type==="all"||item.classList.contains(type)){
+      item.style.display="block";
+    }else{
+      item.style.display="none";
+    }
+  });
+}
+
+/* LOYALTY SYSTEM */
+let points=localStorage.getItem("points")||0;
+points=parseInt(points);
+
+function updatePoints(){
+  document.getElementById("points").innerText=points;
+
+  let reward="";
+  if(points>=200) reward="🎉 Free Stuffed Snowball!";
+  else if(points>=100) reward="🥤 Free Small!";
+  else if(points>=50) reward="🍬 Free Topping!";
+  else reward="Keep earning rewards!";
+
+  document.getElementById("reward").innerText=reward;
+}
+
+function earnPoints(){
+  points+=10;
+  localStorage.setItem("points",points);
+  updatePoints();
+}
+
+updatePoints();
+
+</script>
+
+</body>
+</html>
