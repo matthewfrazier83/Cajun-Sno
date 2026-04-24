@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cajun Sno – Lafayette, LA</title>
+
+<style>
+/* ------------------------------
+   GLOBAL THEME
+--------------------------------*/
+:root {
+  --purple: #6a3bb8;
+  --purple-dark: #4a2a82;
+  --cream: #fff7ec;
+  --yellow: #f7c948;
+  --sunset: linear-gradient(to bottom, #ffb36b, #ffdf9e, #fff7ec);
+  --chalkboard: #2f2f2f;
+  --chalk-text: #ffffff;
+  --text: #2b1e3c;
+  --muted: #6d5a7a;
+  --card-bg: #ffffff;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.12);
+  --max-width: 900px;
+  --font: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--sunset);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #1a1028;
+  color: #f0eaff;
+}
+
+/* ------------------------------
+   HEADER
+--------------------------------*/
+header {
+  background: var(--purple);
+  color: white;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  font-weight: 900;
+  font-family: "Brush Script MT", cursive;
+}
+
+header p {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* DARK MODE HEADER */
+body.dark header {
+  background: #2d1a4f;
+}
+
+/* ------------------------------
+   SPECIALS BANNER
+--------------------------------*/
+.specials {
+  background: var(--yellow);
+  color: #5a4100;
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { background: var(--yellow); }
+  50% { background: #ffe08a; }
+  100% { background: var(--yellow); }
+}
+
+/* ------------------------------
+   SECTION LAYOUT
+--------------------------------*/
+section {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  color: var(--purple-dark);
+  font-weight: 800;
+}
+
+/* DARK MODE HEADERS */
+body.dark h2 {
+  color: #d8caff;
+}
+
+/* ------------------------------
+   CARDS
+--------------------------------*/
+.card {
+  background: var(--card-bg);
+  padding: 1.3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DARK MODE CARD */
+body.dark .card {
+  background: #2a1f3f;
+  color: #f0eaff;
+}
+
+/* ------------------------------
+   PRICING TABLE
+--------------------------------*/
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.pricing-table th {
+  background: var(--purple);
+  color: white;
+  padding: 0.7rem;
+}
+
+.pricing-table td {
+  padding: 0.7rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.pricing-table tr:nth-child(even) {
+  background: #f3eaff;
+}
+
+/* DARK MODE PRICING */
+body.dark .pricing-table th {
+  background: #3d2a66;
+}
+body.dark .pricing-table tr:nth-child(even) {
+  background: #2d1f47;
+}
+
+/* ------------------------------
+   MENU (CHALKBOARD STYLE)
+--------------------------------*/
+.chalkboard {
+  background: var(--chalkboard);
+  color: var(--chalk-text);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-family: "Courier New", monospace;
+  margin-bottom: 2rem;
+}
+
+.chalkboard h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+
+.chalkboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.chalkboard li {
+  padding: 0.3rem 0;
+}
+
+/* DARK MODE CHALKBOARD */
+body.dark .chalkboard {
+  background: #1b1b1b;
+}
+
+/* ------------------------------
+   GALLERY
+--------------------------------*/
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: white;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* DARK MODE GALLERY */
+body.dark .gallery-img {
+  background: #2a1f3f;
+  color: #d8caff;
+}
+
+/* ------------------------------
+   CONTACT
+--------------------------------*/
+.contact-box {
+  background: var(--purple-dark);
+  color: white;
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.contact-box a {
+  color: var(--yellow);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* DARK MODE CONTACT */
+body.dark .contact-box {
+  background: #3d2a66;
+}
+
+/* ------------------------------
+   STICKY MOBILE FOOTER
+--------------------------------*/
+.mobile-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--purple);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  display: none;
+}
+
+.mobile-footer div {
+  cursor: pointer;
+}
+
+/* Show on mobile */
+@media (max-width: 700px) {
+  .mobile-footer {
+    display: flex;
+  }
+}
+
+/* DARK MODE FOOTER */
+body.dark .mobile-footer {
+  background: #2d1a4f;
+}
+
+/* ------------------------------
+   DARK MODE TOGGLE BUTTON
+--------------------------------*/
+.dark-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--yellow);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  z-index: 999;
+}
+
+body.dark .dark-toggle {
+  background: #d8caff;
+  color: #2d1a4f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dark-toggle" onclick="toggleDark()">🌙 Dark Mode</div>
+
+<header>
+  <h1>Cajun Sno</h1>
+  <p>Home of the Stuffed Snowballs • Lafayette, Louisiana</p>
+</header>
+
+<div class="specials">
+  ⭐ Today’s Special: $1 OFF any Stuffed Snowball after 7PM ⭐
+</div>
+
+<!-- ABOUT -->
+<section>
+  <h2>Our Story</h2>
+  <div class="card">
+    <p>
+      Since 1991, Cajun Sno has been serving Lafayette with soft, fluffy snowballs,
+      homemade flavors, and our famous stuffed snowballs filled with ice cream.
+      We're a hometown family business — the kind where folks grow up coming here
+      and bring their own kids back years later.
+    </p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section>
+  <h2>Menu</h2>
+
+  <!-- PRICING -->
+  <div class="card">
+    <h3 style="margin-top:0;">Sizes & Prices</h3>
+
+    <table class="pricing-table">
+      <tr>
+        <th>Size</th>
+        <th>Snowball</th>
+        <th>Stuffed / Iceberg</th>
+      </tr>
+      <tr><td>Kiddie (12 oz)</td><td>$2.25</td><td>$3.25</td></tr>
+      <tr><td>Small (16 oz)</td><td>$3.00</td><td>$3.75</td></tr>
+      <tr><td>Medium (20 oz)</td><td>$3.25</td><td>$4.25</td></tr>
+      <tr><td>Large (24 oz)</td><td>$3.50</td><td>$5.00</td></tr>
+      <tr><td>X-Large (32 oz)</td><td>$4.25</td><td>$6.50</td></tr>
+    </table>
+  </div>
+
+  <!-- CHALKBOARD MENU -->
+  <div class="chalkboard">
+    <h3>Today's Chalkboard Menu</h3>
+    <ul>
+      <li>🍧 Stuffed Snowballs</li>
+      <li>🍧 Icebergs</li>
+      <li>🍦 Shakes</li>
+      <li>🍦 Single & Double Scoops</li>
+      <li>🌶 Nachos & Frito Pies</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2>Photo Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-img">Image Placeholder</div>
+    <div class="gallery-img">Image Placeholder</div>
+    <div class="gallery-img">Image Placeholder</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <h2>Come Visit Us</h2>
+  <div class="contact-box">
+    <p><strong>Phone:</strong> (337) 981-3342</p>
+    <p><strong>Facebook:</strong> <a href="#">Cajun Sno</a></p>
+    <p>Walk-up window • Car service • Debit cards accepted</p>
+  </div>
+
+  <div style="margin-top:1rem;">
+    <iframe
+      width="100%"
+      height="250"
+      style="border-radius: var(--radius); box-shadow: var(--shadow);"
+      src="https://maps.google.com/maps?q=Lafayette%20LA&t=&z=13&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Cajun Sno – All Rights Reserved
+</footer>
+
+<!-- STICKY MOBILE FOOTER -->
+<div class="mobile-footer">
+  <div onclick="window.location='#menu'">Menu</div>
+  <div onclick="window.location='tel:3379813342'">Call</div>
+  <div onclick="window.location='#contact'">Visit</div>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
